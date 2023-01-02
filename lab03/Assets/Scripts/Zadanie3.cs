@@ -4,21 +4,31 @@ using UnityEngine;
 
 public class Zadanie3 : MonoBehaviour
 {
-    Vector3 targetPosition = new Vector3(10, 0, 0);
-    public float speed = 2.0f;
-    float angle = 90;
-    void Start()
-    {
-        Debug.Log(Vector3.Distance(transform.position, targetPosition));
-    }
+    public float speed;
+    private Vector3 targetPosition = new Vector3(10, 0, 0);
     void Update()
     {
-
         float move = speed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, move);
-        if (transform.position.x == 10)
+        if (transform.position.x <= 0 && transform.position.z <= 0)
         {
-            transform.rotation *= Quaternion.Euler(Vector3.up * 90);
+            targetPosition = new Vector3(10, 0, 0);
+            transform.Rotate(0, -90, 0);
+        }
+        if (transform.position.x >= 10 && transform.position.z <= 0)
+        {
+            targetPosition = new Vector3(10, 0, 10);
+            transform.Rotate(0, -90, 0);
+        }
+        if (transform.position.x >= 10 && transform.position.z >= 10)
+        {
+            targetPosition = new Vector3(0, 0, 10);
+            transform.Rotate(0, -90, 0);
+        }
+        if (transform.position.x <= 0 && transform.position.z >= 10)
+        {
+            targetPosition = new Vector3(0, 0, 0);
+            transform.Rotate(0, -90, 0);
         }
         
     }
