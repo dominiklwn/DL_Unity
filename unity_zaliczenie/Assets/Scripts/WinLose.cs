@@ -17,6 +17,7 @@ public class WinLose : MonoBehaviour
     {
         //Physics2D.IgnoreCollision(watergirl.GetComponent<Collider2D>(), player2.GetComponent<Collider2D>());
         InputSystem.DisableDevice(Keyboard.current);
+        SceneManager.LoadScene("LevelComplete");
     }
     public void LoseLevel()
     {
